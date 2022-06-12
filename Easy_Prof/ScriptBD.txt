@@ -1,0 +1,101 @@
+Banco de dados: db_easy_prof
+
+CREATE TABLE uf (
+	cdUf	SERIAL NOT NULL,
+	estados	VARCHAR(5) NOT NULL,
+	CONSTRAINT pk_uf
+      PRIMARY KEY(cdUf)
+);
+
+CREATE TABLE disciplina_de_atuacao (
+	cdDisciplina	SERIAL NOT NULL,
+	disciplinas	VARCHAR(40) NOT NULL,
+	CONSTRAINT pk_disciplina_de_atuacao
+	  PRIMARY KEY(cdDisciplina)
+);
+
+CREATE TABLE nivel_formacao_academica (
+	cdNivel_Formacao	SERIAL NOT NULL,
+	nivel_formacao	VARCHAR(40) NOT NULL,
+	CONSTRAINT pk_nivel_formacao
+	  PRIMARY KEY(cdNivel_Formacao)
+);
+
+CREATE TABLE professores (
+	cdProfessor SERIAL NOT NULL,
+	nome	VARCHAR(40) NOT NULL,
+	login	VARCHAR(40) NOT NULL,
+	cpf     VARCHAR(14) NOT NULL UNIQUE,
+	telefone VARCHAR(20) NOT NULL,
+	idade	INTEGER NOT NULL,
+	email	VARCHAR(50) NOT NULL,
+	disciplina INTEGER NOT NULL,
+	localidade INTEGER NOT NULL,
+	formacao INTEGER NOT NULL,
+	custo_hora NUMERIC(9,2) NOT NULL,
+	senha     VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_professor
+	  PRIMARY KEY(cdProfessor),
+	CONSTRAINT fk_uf_professor
+	  FOREIGN KEY(localidade)
+	  REFERENCES uf(cdUf),
+	CONSTRAINT fk_disciplina_professor
+	  FOREIGN KEY(disciplina)
+	  REFERENCES disciplina_de_atuacao(cdDisciplina),
+	CONSTRAINT fk_formacao_professor
+	  FOREIGN KEY(formacao)
+	  REFERENCES nivel_formacao_academica(cdNivel_formacao)
+);
+
+CREATE TABLE alunos (
+	cdAluno	SERIAL NOT NULL,
+	nome	VARCHAR(40) NOT NULL,
+	login VARCHAR(40) NOT NULL,
+	email     VARCHAR(40) NOT NULL,
+	telefone  VARCHAR(40) NOT NULL,
+	idade     INTEGER NOT NULL,
+	cpf       VARCHAR(14) NOT NULL UNIQUE,
+	localidade INTEGER NOT NULL,
+	senha     VARCHAR(40) NOT NULL,
+	CONSTRAINT pk_Alunos
+      PRIMARY KEY(cdAluno),
+	CONSTRAINT fk_uf_aluno
+	  FOREIGN KEY(localidade)
+	  REFERENCES uf(cdUf)
+);
+
+CREATE TABLE contratacao(
+	cdContratacao SERIAL NOT NULL,
+	dataDeAula DATE NOT NULL,
+	dataContratacao DATE NOT NULL,
+	alunoContratante INTEGER NOT NULL,
+	professorContratado INTEGER NOT NULL,
+	valorContratacao NUMERIC(9,2) NOT NULL,
+	duracaoAula INTEGER NOT NULL,
+	CONSTRAINT pk_contratacao
+		PRIMARY KEY(cdContratacao),
+	CONSTRAINT fk_contratacao_aluno
+		FOREIGN KEY(alunoContratante)
+		REFERENCES alunos(cdAluno),
+	CONSTRAINT fk_contratacao_professor
+		FOREIGN KEY(professorContratado)
+		REFERENCES professores(cdProfessor)
+);
+
+INSERT INTO uf (estados) VALUES ('AC'), ('AL'), ('AP'), ('AM'), ('BA'), ('CE'), ('DF'), ('ES'), ('GO');
+INSERT INTO uf (estados) VALUES ('MA'), ('MT'), ('MS'), ('MG'), ('PA'), ('PB'), ('PR'), ('PE'), ('PI');
+INSERT INTO uf (estados) VALUES ('RJ'), ('RN'), ('RS'), ('RO'), ('RR'), ('SC'), ('SP'), ('SE'), ('TO');
+
+INSERT INTO disciplina_de_atuacao (disciplinas) VALUES ('Língua Portuguesa'), ('Matemática'), ('Biologia'), ('Física'), ('Química');
+INSERT INTO disciplina_de_atuacao (disciplinas) VALUES ('História'), ('Geografia'), ('Língua Inglesa'), ('Filosofia'), ('Sociologia'), ('Espanhol');
+
+INSERT INTO nivel_formacao_academica (nivel_formacao) VALUES ('Graduação'), ('Pós-Graduação'), ('Mestrado'), ('Doutorado'), ('Pós-Doutorado');
+
+INSERT INTO alunos VALUES (1, 'Fulano Silva', 'fulano', 'fulano123@gmail.com', '(28)99911-1111', 20, '111.111.111-30', 8, '123456');
+INSERT INTO alunos VALUES (2, 'Ciclano Costa', 'ciclano', 'ciclano123@gmail.com', '(28)99922-2222', 22, '222.222.222-30', 19, '123456');
+
+INSERT INTO professores VALUES(1, 'Albert Einstein', 'albert', '444.444.444-30', '(28)99944-4444', 30, 'albert123@gmail.com', 4, 8, 4, 70.5, '12345');
+INSERT INTO professores VALUES(2, 'Girafales Carvalho', 'girafales', '555.555.555-30', '(28)99955-5555', 40, 'girafales123@gmail.com', 5, 10, 3, 50.75, '12345');
+
+INSERT INTO contratacao VALUES(1, '2022-06-20', '2022-06-12', 1, 1, 211.5, 3);
+INSERT INTO contratacao VALUES(2, '2022-06-21', '2022-06-12', 2, 2, 101.5, 2);
