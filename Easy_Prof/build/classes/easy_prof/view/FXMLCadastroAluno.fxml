@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="759.0" style="-fx-background-color: #00ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="easy_prof.controller.FXMLCadastroAlunoController">
+   <children>
+      <ImageView fx:id="imageViewAluno" fitHeight="92.0" fitWidth="116.0" layoutX="46.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/baixados-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="textCadastroAluno" layoutX="251.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Aluno">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="35.0" layoutY="182.0" text="Nome:" />
+      <Label layoutX="393.0" layoutY="182.0" text="Login:" />
+      <Label layoutX="37.0" layoutY="254.0" text="Email:" />
+      <Label layoutX="386.0" layoutY="255.0" text="Telefone:" />
+      <Label layoutX="36.0" layoutY="327.0" text="Idade:" />
+      <Label layoutX="398.0" layoutY="328.0" text="CPF:" />
+      <Label layoutX="38.0" layoutY="403.0" text="Localidade:" />
+      <Label layoutX="359.0" layoutY="404.0" text="Senha para Acesso:" />
+      <ComboBox fx:id="comboBoxLocalidade" layoutX="116.0" layoutY="398.0" prefHeight="28.0" prefWidth="180.0" />
+      <PasswordField fx:id="passwordFieldSenhaParaAcesso" layoutX="489.0" layoutY="399.0" prefHeight="25.0" prefWidth="211.0" />
+      <TextField fx:id="textFieldNome" layoutX="116.0" layoutY="178.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="textFieldEmail" layoutX="116.0" layoutY="250.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="textFieldLogin" layoutX="499.0" layoutY="178.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="textFieldIdade" layoutX="116.0" layoutY="323.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="textFieldTelefone" layoutX="499.0" layoutY="251.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="textFieldCpf" layoutX="499.0" layoutY="323.0" prefHeight="26.0" prefWidth="180.0" promptText="XXX.XXX.XXX-XX" />
+      <Button fx:id="buttonCadastrar" layoutX="597.0" layoutY="546.0" mnemonicParsing="false" onAction="#persistirDados" prefHeight="32.0" prefWidth="92.0" text="Cadastrar" />
+   </children>
+</AnchorPane>
