@@ -91,11 +91,20 @@ INSERT INTO disciplina_de_atuacao (disciplinas) VALUES ('História'), ('Geografi
 
 INSERT INTO nivel_formacao_academica (nivel_formacao) VALUES ('Graduação'), ('Pós-Graduação'), ('Mestrado'), ('Doutorado'), ('Pós-Doutorado');
 
-INSERT INTO alunos VALUES (1, 'Fulano Silva', 'fulano', 'fulano123@gmail.com', '(28)99911-1111', 20, '111.111.111-30', 8, '123456');
-INSERT INTO alunos VALUES (2, 'Ciclano Costa', 'ciclano', 'ciclano123@gmail.com', '(28)99922-2222', 22, '222.222.222-30', 19, '123456');
+INSERT INTO alunos(nome, login, email, telefone, idade, cpf, localidade, senha) 
+VALUES ('Fulano Silva', 'fulano', 'fulano123@gmail.com', '(28)99911-1111', 20, '111.111.111-30', 8, '123456');
 
-INSERT INTO professores VALUES(1, 'Albert Einstein', 'albert', '444.444.444-30', '(28)99944-4444', 30, 'albert123@gmail.com', 4, 8, 4, 70.5, '12345');
-INSERT INTO professores VALUES(2, 'Girafales Carvalho', 'girafales', '555.555.555-30', '(28)99955-5555', 40, 'girafales123@gmail.com', 5, 10, 3, 50.75, '12345');
+INSERT INTO alunos(nome, login, email, telefone, idade, cpf, localidade, senha) 
+VALUES ('Ciclano Costa', 'ciclano', 'ciclano123@gmail.com', '(28)99922-2222', 22, '222.222.222-30', 19, '123456');
 
-INSERT INTO contratacao VALUES(1, '2022-06-20', '2022-06-12', 1, 1, 211.5, 3);
-INSERT INTO contratacao VALUES(2, '2022-06-21', '2022-06-12', 2, 2, 101.5, 2);
+INSERT INTO professores(nome, login, cpf, telefone, idade, email, disciplina, localidade, formacao, custo_hora, senha) 
+VALUES('Albert Einstein', 'albert', '444.444.444-30', '(28)99944-4444', 30, 'albert123@gmail.com', 4, 8, 4, 70.5, '12345');
+
+INSERT INTO professores(nome, login, cpf, telefone, idade, email, disciplina, localidade, formacao, custo_hora, senha) 
+VALUES('Girafales Carvalho', 'girafales', '555.555.555-30', '(28)99955-5555', 40, 'girafales123@gmail.com', 5, 10, 3, 50.75, '12345');
+
+INSERT INTO contratacao(dataDeAula, dataContratacao, alunoContratante, professorContratado, valorContratacao, duracaoAula) 
+VALUES('2022-06-20', '2022-06-12', 1, 1, 211.5, 3);
+
+INSERT INTO contratacao(dataDeAula, dataContratacao, alunoContratante, professorContratado, valorContratacao, duracaoAula) 
+VALUES('2022-06-21', '2022-06-12', 2, 2, 101.5, 2);
