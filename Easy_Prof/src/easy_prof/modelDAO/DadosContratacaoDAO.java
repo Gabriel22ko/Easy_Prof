@@ -33,12 +33,12 @@ public class DadosContratacaoDAO {
         String sql = "SELECT cdContratacao, alunos.nome alnome, professores.nome profnome, dataDeAula, duracaoAula FROM contratacao\n"
                 + "INNER JOIN alunos ON contratacao.alunoContratante = alunos.cdAluno\n"
                 + "INNER JOIN professores ON contratacao.professorContratado =  professores.cdProfessor";
-        DadosContratacao contratacaoResultante = new DadosContratacao();
         ArrayList<DadosContratacao> retorno = new ArrayList<>();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
             while(resultado.next()){
+                DadosContratacao contratacaoResultante = new DadosContratacao();
                 contratacaoResultante.setCdContratacao(resultado.getInt("cdContratacao"));
                 contratacaoResultante.setNomeAluno(resultado.getString("alnome"));
                 contratacaoResultante.setNomeProfessor(resultado.getString("profnome"));
