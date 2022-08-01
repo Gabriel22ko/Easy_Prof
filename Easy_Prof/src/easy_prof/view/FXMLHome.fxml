@@ -57,6 +57,11 @@
                         <Font name="Arial Black" size="17.0" />
                      </font>
                   </Button>
+                  <Button fx:id="buttonThreadSockets" mnemonicParsing="false" onAction="#trocarInterfaceThreadsSockets" prefHeight="60.0" prefWidth="178.0" style="-fx-background-color: #4682B4;" text="Thread/Sockets">
+                     <font>
+                        <Font name="Arial Black" size="17.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>
