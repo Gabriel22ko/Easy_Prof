@@ -117,4 +117,10 @@ public class FXMLHomeController implements Initializable {
         anchorPanePrincipal.getChildren().removeAll();
         anchorPanePrincipal.getChildren().setAll(interfaceInicio);
     }
+    
+    public void trocarInterfaceThreadsSockets() throws IOException{
+        Parent interfaceInicio = FXMLLoader.load(getClass().getResource("/easy_prof/view/FXMLThreadsSockets.fxml"));
+        anchorPanePrincipal.getChildren().removeAll();
+        anchorPanePrincipal.getChildren().setAll(interfaceInicio);
+    }
 }
